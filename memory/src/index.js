@@ -4,7 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+function CoolComponent({ adjective = 'Cool' }) {
+    return <p>Youpi So {adjective} !</p>
+  }
+  
+ReactDOM.render(<div><CoolComponent adjective="awesome" /> <CoolComponent /> </div>, document.getElementById('compo_01'))
+
+ReactDOM.render(<App />, document.getElementById('compo_02'));
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
