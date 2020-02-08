@@ -1,22 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react'
+import shuffle from 'lodash.shuffle'
+
+import './App.css'
+
+
 import Card from './Card'
 import GuessCount from './GuessCount'
+import HallOfFame, {FAKE_HOF} from './HallOfFame'
 
-class App extends React.Component {
-  
+const SIDE = 6
+const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
+
+class App extends Component {
+  cards = this.generateCards()
+
+  generateCards() {
+    const result = []
+    const size = SIDE * SIDE
+    const candidates = shuffle(SYMBOLS)
+    while (result.length < size) {
+      const card = candidates.pop()
+      result.push(card, card)
+    }
+    return shuffle(result)
+  }
+
   handleCardClick(card) {
     console.log(card, 'clicked')
   }
+
   render() {
+    const won = new Date().getSeconds() % 2 === 0
     return (
       <div className="memory">
         <GuessCount guesses={0} />
-        <Card card="😀" feedback="hidden" prop_onClick={this.handleCardClick} />
-        <Card card="🎉" feedback="justMatched" prop_onClick={this.handleCardClick}/>
-        <Card card="💖" feedback="justMismatched" prop_onClick={this.handleCardClick}/>
-        <Card card="🎩" feedback="visible" prop_onClick={this.handleCardClick}/>
-        <Card card="🐶" feedback="hidden" prop_onClick={this.handleCardClick}/>
-        <Card card="🐱" feedback="justMatched" prop_onClick={this.handleCardClick}/>
+
+        {
+          this.cards.map(
+            (card, index) => (
+              <Card card={card} key={index} feedback='visible' onClick={this.handleCardClick}/>
+            )
+          )
+        }
+        {won && <HallOfFame entries={FAKE_HOF}/> }
       </div>
     )
   }
