@@ -13,11 +13,8 @@ function CoolComponent({ adjective = 'Cool', number = 15, admin }) {
 }
 
 
-
-
-
 ReactDOM.render(<div><CoolComponent adjective="awesome" number='qa' admin={true}/> <CoolComponent /> </div>, document.getElementById('compo_01'))
-ReactDOM.render(<GuessCount guesses="aaaa" />, document.getElementById('compo_02'));
+ReactDOM.render(<GuessCount guesses={15} />, document.getElementById('compo_02'));
 
 ReactDOM.render(<App />, document.getElementById('compo_03'));
 

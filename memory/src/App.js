@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   handleCardClick(card) {
-    console.log(card, 'clicked')
+    console.log(card, 'clicked', this)
   }
 
   render() {
@@ -38,7 +38,7 @@ class App extends Component {
         {
           this.cards.map(
             (card, index) => (
-              <Card card={card} key={index} feedback='visible' onClick={this.handleCardClick}/>
+              <Card card={card} key={index} feedback='visible' onClick={() => this.handleCardClick(card)}/>
             )
           )
         }
