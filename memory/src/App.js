@@ -24,7 +24,6 @@ class App extends Component {
 */
 
 // Autre de methode pour lier la fonction avec this
-
 handleCardClick = (card) => {
   console.log(card, 'clicked', this)
 }
@@ -39,7 +38,6 @@ handleCardClick = (card) => {
     }
     return shuffle(result)
   }
-
 
   render() {
     const won = new Date().getSeconds() % 2 === 0
