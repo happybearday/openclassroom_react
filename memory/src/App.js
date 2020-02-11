@@ -14,6 +14,21 @@ const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓�
 class App extends Component {
   cards = this.generateCards()
 
+  /**
+ * Bind la fonction avec le this. 
+ * constructor(props){
+    super(props)
+    this.handleCardClick = this.handleCardClick.bind(this)
+  }
+ * 
+*/
+
+// Autre de methode pour lier la fonction avec this
+
+handleCardClick = (card) => {
+  console.log(card, 'clicked', this)
+}
+
   generateCards() {
     const result = []
     const size = SIDE * SIDE
@@ -25,9 +40,6 @@ class App extends Component {
     return shuffle(result)
   }
 
-  handleCardClick(card) {
-    console.log(card, 'clicked', this)
-  }
 
   render() {
     const won = new Date().getSeconds() % 2 === 0
@@ -38,7 +50,7 @@ class App extends Component {
         {
           this.cards.map(
             (card, index) => (
-              <Card card={card} key={index} feedback='visible' onClick={() => this.handleCardClick(card)}/>
+              <Card card={card} key={index} feedback='visible' onClick={this.handleCardClick}/>
             )
           )
         }
