@@ -8,6 +8,7 @@ import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame, {FAKE_HOF} from './HallOfFame'
 
+const VISUAL_PAUSE_MSECS = 750
 const SIDE = 6
 const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
 
@@ -20,6 +21,19 @@ class App extends Component {
     matchedCardIndices : [],
   }
   
+  handleNewPairClosedBy(index) {
+    const { cards, currentPair, guesses, matchedCardIndices } = this.state
+
+    const newPair = [currentPair[0], index]
+    const newGuesses = guesses + 1
+    const matched = cards[newPair[0]] === cards[newPair[1]]
+    this.setState({ currentPair: newPair, guesses: newGuesses })
+    if (matched) {
+      this.setState({ matchedCardIndices: [...matchedCardIndices, ...newPair] })
+    }
+    setTimeout(() => this.setState({ currentPair: [] }), VISUAL_PAUSE_MSECS)
+  }
+
 
 // Autre de methode pour lier la fonction avec this
 // Arrow fx for binding
