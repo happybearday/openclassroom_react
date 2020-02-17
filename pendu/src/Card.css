@@ -1,0 +1,14 @@
+.card {
+  font-size: 2em;
+  display: inline;
+  outline: 0.08em solid silver;
+  text-align: center;
+}
+
+.card.found{
+  font-size: 2em;
+  display: inline;
+  text-align: center;
+  outline: None;
+
+}
