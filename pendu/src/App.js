@@ -38,7 +38,6 @@ class App extends Component {
     if (guessed_alphabet_index ===  null && guessed_letter_index === null){
       if (alphabet_cases){
           this.setState(() =>({guessed_alphabet_index : index}))
-      
         } else {
           this.setState(() =>({guessed_letter_index   : index}))
       }
@@ -60,10 +59,9 @@ class App extends Component {
         this.setState(() =>({count_number : count_number +1}));
         return 
       }
-
     }
 
-    if ( guessed_letter_index === null && guessed_alphabet_index === null && alphabet_cases ) {
+    if ( guessed_letter_index === null && alphabet_cases ) {
       console.log('___guessed_letter_index === null && guessed_alphabet_index === null && alphabet_cases___')
       this.setState(() =>({guessed_alphabet_index : index}))
       return
@@ -82,10 +80,9 @@ class App extends Component {
         this.setState(() =>({count_number : count_number +1}));
         return 
       }
-
     }
 
-    if ( guessed_letter_index === null && guessed_alphabet_index === null && !alphabet_cases ) {
+    if (  guessed_alphabet_index === null  && !alphabet_cases ) {
       console.log('___guessed_letter_index === null && guessed_alphabet_index === null && !alphabet_cases___')
       this.setState(() =>({guessed_letter_index : index}))
       return
