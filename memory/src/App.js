@@ -12,7 +12,7 @@ import HighScoreInput from './HighScoreInput'
 
 
 const VISUAL_PAUSE_MSECS = 750
-const SIDE = 3
+const SIDE = 6
 const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
 
 class App extends Component {
