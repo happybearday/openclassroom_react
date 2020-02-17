@@ -1,10 +1,11 @@
 .memory > .card {
-    font-size: 2em;
-    flex: 1 1 calc(100% / 6 - 0.4em);
-    outline: 0.08em solid silver;
-    margin: 0.2em;
-    display: flex;
-    cursor: default;
+
+  font-size: 2em;
+  flex: 1 1 calc(100% / 6 - 0.4em);
+  outline: 0.08em solid silver;
+ cursor: default;
+ display: flex;
+ margin: 0.2em;
   }
   
   .memory > .card.hidden {

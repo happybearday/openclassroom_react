@@ -7,9 +7,12 @@ import './App.css'
 import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame, {FAKE_HOF} from './HallOfFame'
+import HighScoreInput from './HighScoreInput'
+
+
 
 const VISUAL_PAUSE_MSECS = 750
-const SIDE = 6
+const SIDE = 3
 const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
 
 class App extends Component {
@@ -19,6 +22,7 @@ class App extends Component {
     currentPair : [],
     guesses : 0,
     matchedCardIndices : [],
+    hallOfFame : null
   }
   
   handleNewPairClosedBy(index) {
@@ -75,9 +79,13 @@ handleCardClick = index => {
     return indexMatched ? 'visible' : 'hidden'
   }
 
+  displayHallOfFame = (hallOfFame) => {
+    this.setState({ hallOfFame})
+ } 
+ 
   render() {
-    const { cards, guesses, matchedCardIndices} = this.state
-    const won = matchedCardIndices === cards.length
+    const { cards, guesses, hallOfFame, matchedCardIndices} = this.state
+    const won = matchedCardIndices.length === 4 //cards.length
     return (
       <div className="memory">
         <GuessCount guesses={guesses} />
@@ -90,7 +98,14 @@ handleCardClick = index => {
               index={index}
               onClick={this.handleCardClick}/>
         ))}
-        {won && <HallOfFame entries={FAKE_HOF}/> }
+        {
+            won &&
+              (hallOfFame ? (
+                <HallOfFame entries={hallOfFame} />
+              ) : (
+                <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
+              ))
+          }
       </div>
     )
   }
