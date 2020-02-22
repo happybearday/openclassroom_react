@@ -35,4 +35,4 @@ Happy hacking!
 Note sur le cours :
   - https://openclassrooms.com/fr/courses/5511091-organisez-votre-application-react-avec-la-logique-redux
   - https://vimeo.com/showcase/5747774
-  
+  - https://github.com/OpenClassrooms-Student-Center/logique-redux-revision-react
